@@ -1,14 +1,11 @@
+symbol = input("Enter the latter: ").lower()
+count = 0
+
 with open('input.txt', 'r', encoding='utf-8') as infile:
-    lines = infile.readlines()
+    words = infile.read().split()
 
-inserted = False
-with open('output.txt', 'w', encoding='utf-8') as outfile:
-    for line in lines:
-        outfile.write(line)
-        if ',' not in line and not inserted:
-            outfile.write('************\n')
-            inserted = True
+    for word in words:
+        if word.lower().startswith(symbol):
+            count += 1
 
-if not inserted:
-    with open('output.txt', 'a', encoding='utf-8') as outfile:
-        outfile.write('************\n')
+print(f"The number of words that begin with: '{symbol}': {count}")
