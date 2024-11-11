@@ -1,12 +1,11 @@
+search_word = input("Enter the word to count: ")
+
 with open('input.txt', 'r', encoding='utf-8') as file:
-    lines = file.readlines()
-    max_length = 0
+    words = file.read().split()
+    count = 0
 
-for line in lines:
-    line = line.strip()
-    line_length = len(line)
+for word in words:
+    if word == search_word:
+        count += 1
 
-    if line_length > max_length:
-        max_length = line_length
-
-print(f"The length of the longest line is: {max_length}")
+print(f"The word '{search_word}' appears {count} times.")
