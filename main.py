@@ -1,12 +1,33 @@
-with open('file1.txt', 'r', encoding='utf-8') as file1, open('file2.txt', 'r', encoding='utf-8') as file2:
-    lines1 = file1.readlines()
-    lines2 = file2.readlines()
+with open('input.txt', 'r', encoding='utf-8') as file:
+    content = file.read()
 
-for i in range(min(len(lines1), len(lines2))):
-    if lines1[i] != lines2[i]:
-        print(f"Line {i + 1} does not match:")
-        print(f"File 1: {lines1[i].strip()}")
-        print(f"File 2: {lines2[i].strip()}")
+num_chars = 0
+for char in content:
+    num_chars += 1
 
-if len(lines1) != len(lines2):
-    print("\nFiles have a different number of lines.")
+num_lines = 1
+for char in content:
+    if char == '\n':
+        num_lines += 1
+
+num_vowels = 0
+for char in content.lower():
+    if char in 'aeiou':
+        num_vowels += 1
+
+num_consonants = 0
+for char in content.lower():
+    if char.isalpha() and char not in 'aeiou':
+        num_consonants += 1
+
+num_digits = 0
+for char in content:
+    if char.isdigit():
+        num_digits += 1
+
+with open('output.txt', 'w', encoding='utf-8') as outfile:
+    outfile.write(f"Number of characters: {num_chars}\n")
+    outfile.write(f"Number of lines: {num_lines}\n")
+    outfile.write(f"Number of vowels: {num_vowels}\n")
+    outfile.write(f"Number of consonants: {num_consonants}\n")
+    outfile.write(f"Number of digits: {num_digits}\n")
