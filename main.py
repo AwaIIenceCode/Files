@@ -1,5 +1,5 @@
-with open('input.txt', 'r', encoding='utf-8') as infile:
-    content = infile.read().replace('*', 'TEMP').replace('&', '*').replace('TEMP', '&')
+lines = ["Row 1", "Row 2", "Row 3"]
 
 with open('output.txt', 'w', encoding='utf-8') as outfile:
-    outfile.write(content)
+    for line in lines:
+        outfile.write(line + '\n')
